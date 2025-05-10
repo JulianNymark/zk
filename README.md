@@ -18,6 +18,13 @@ Markdown-nature, you should take a look at [Obsidian][2]. After switching
 note-taking system every year for years, I am no longer interested in custom
 software and will stick to time-tested utilities.
 
+## Worth knowing / prerequisite knowledge
+
+- [tmux](https://github.com/tmux/tmux/wiki) basics, since these scripts (at least some of the fzf binds) expect to "live within tmux",
+  it's worth looking into how to do the basics such as creating,navigating,deleting windows (and sessions... etc) [cheatsheet](https://learnxinyminutes.com/tmux)
+- either [nvim](https://neovim.io/) or [vim](https://www.vim.org/) (again the fzf binds have some (n)vim specifics, so you would need to re-configure those binds to your appropriate editor to get those features, but it's worth giving tmux + vim a try! then most of this project will/should work)
+- basic scripting (bash/zsh... or anything you're comfortable with really :raised_hands:... this project has some [bash](https://learnxinyminutes.com/bash) + [ruby](https://learnxinyminutes.com/ruby))
+
 ![](https://pbs.twimg.com/media/EQGYhAJUYAEPC4j?format=jpg&name=4096x4096)
 
 In this `screenshot`, we have `zks` running in the top-right, `zkt` in the
@@ -28,7 +35,7 @@ it's recommended to use `tmux`.
 
 The scripts assumes `$ZK_PATH` is set to your Zettelkasten directory. Your
 Zettelkasten are markdown files in this directory. Nesting is presently not
-supported.  Each note must have a 12-number prefix (date note was created), e.g.
+supported. Each note must have a 12-number prefix (date note was created), e.g.
 `202005050837 Monkey Ladder.md`. It's recommended to do some kind of backup,
 e.g. Dropbox/iCloud/...
 
@@ -42,14 +49,14 @@ launch-point!
 `zks`. `fzf`-enabled full-text search (top-right pane in screenshot above) over
 all your notes, using `sqlite`. The index updates automatically based on file
 modification. See the `FZF_DEFAULT_OPTS` below for various key-bindings you can
-use to open splits in Vim, copy to clipboard, etc.  directly from here. `Alt-S`
+use to open splits in Vim, copy to clipboard, etc. directly from here. `Alt-S`
 will find similar notes with `zksim`.
 
 `zksim`. Finds similar notes to the note passed as an argument. See [#1][1] for
 more.
 
 `zkt`. `fzf`-enabled tag browser. Pressing enter on a tag will show you notes
-with that tag.  notes, using `sqlite`. See the `FZF_DEFAULT_OPTS` below for
+with that tag. notes, using `sqlite`. See the `FZF_DEFAULT_OPTS` below for
 various key-bindings you can use to open splits, copy to clipboard, etc.
 directly from here.
 
@@ -79,6 +86,7 @@ $ echo 'export ZK_PATH="$HOME/Zettelkasten"' >> ~/.bashrc
 Install the dependencies with your package manager.
 
 MacOS:
+
 ```bash
 # brew install ripgrep fzf sqlite3 bat
 # gem install sqlite3
@@ -87,6 +95,7 @@ MacOS:
 Linux:
 
 `build-essential`,`libsqlite3-dev` and `ruby-dev` are needed to install the sqlite3 gem. For example—on Debian/Ubuntu, run:
+
 ```bash
 # apt install ripgrep fzf sqlite3 bat build-essential libsqlite3-dev ruby ruby-dev
 # gem install sqlite3
